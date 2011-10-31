@@ -17,6 +17,7 @@ answers = as.character(toefl$answer)
 
 dictionary <- read.csv("data/dictionary.csv")
 # dictionary = (word, vector)
+colnames(dictionary)[1] <- "word"
 
 ##################################################
 #
