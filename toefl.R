@@ -68,16 +68,21 @@ random.guesser <- function(target, candidates)
 #
 ##################################################
 
+#this evaluate the percentage correct
 evaluate <- function(guess_vec)
   {
 	  sum(guess_vec == answers) / n_q
   }
 
+#this evaluates the percentage correct controlling for guessing given the 
+#standard formula found on p220 of LSA, Landauer & Dumais, 1997
 evaluate_and_control_for_guesses = function(guess){
 	prop_corr = evaluate(guess)
 	prop_chance = n_q * (1 / num_choices) / n_q
 	max((prop_corr - prop_chance) / (1 - prop_chance), 0)
 }
+
+
 ###################################################
 #
 #  Main code
