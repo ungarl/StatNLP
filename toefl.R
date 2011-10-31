@@ -70,10 +70,10 @@ evaluate <- function(guess_vec)
 	  sum(guess_vec == answers) / n_q
   }
 
-  evaluate_and_control_for_guesses = function(guess_vec){
-	prop_corr = evaluate(guess_vec)
+evaluate_and_control_for_guesses = function(guess){
+	prop_corr = evaluate(guess)
 	prop_chance = n_q * (1 / num_choices) / n_q
-	(prop_corr - prop_chance) / (1 - prop_chance)
+	max((prop_corr - prop_chance) / (1 - prop_chance), 0)
 }
 ###################################################
 #
