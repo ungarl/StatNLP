@@ -71,6 +71,35 @@ cosine.similarity <- function(vector1,vector2)
 	return(sim.cosine)
  }
 
+k<-c(1,2,3)
+
+j<-c(4,5,6)
+
+cosine.similarity(k,j) ########## 0.9746318
+cosine.similarity(c(0,1),c(1,0) ########## should return 0
+cosine.similarity(k,k)  ######### should return 1
+
+
+cosine.guesser <- function(target, candidates, cosine.metric)
+{
+  generic.guesser(target, candidates, cosine.metric)
+}
+
+### Input: (string) target vector, (list) candidates.vector, distance.metric
+### Output: closest candidate
+generic.guesser <- function(target, candidates, distance.metric){
+
+  closest.candidate <- vector()
+  closest.candidate.value <- -Inf
+  
+  for(ii in 1:ncol(candidates) ){
+    this.candidate <- candidates[ii]
+    
+    candidate.similarity.value <- distance.metric(target, this.candidate)
+    if( candidate.similarity.value > closest.similarity.value ){
+      closest.candidate <- this.candidate
+      closest.candidate.value <- candidate.similarity.value
+    }
 
 cosine.guesser <- function(target, candidates)
   {
@@ -78,6 +107,28 @@ cosine.guesser <- function(target, candidates)
 
 
   }
+
+##################################################
+#
+#  L2 Guesser 
+#
+##################################################
+l2.similarity <- function(vector1,vector2)
+ {
+	sim.l2<- sum((vector1-vector2)^2)
+	return(sim.l2)
+ }
+
+
+l2.guesser <- function(target, candidates)
+  {
+	
+
+
+  }
+  
+  closest.candidate
+}
 
 
 ##################################################
