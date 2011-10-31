@@ -15,10 +15,12 @@ num_choices = 4
 #the answers as a vector of strings
 answers = as.character(toefl$answer)
 
-dictionary <- read.csv("data/dictionary.csv")
+dictionary <- read.csv("data/dictionary.csv",header=FALSE)
 # dictionary = (word, vector)
 colnames(dictionary)[1] <- "word"
-
+print(colnames(dictionary))
+dictionary
+      
 ##################################################
 #
 #  Confirming we got names with the data
