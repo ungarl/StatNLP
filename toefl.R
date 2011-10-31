@@ -72,6 +72,25 @@ cosine.guesser <- function(target, candidates)
 
   }
 
+##################################################
+#
+#  L2 Guesser 
+#
+##################################################
+l2.similarity <- function(vector1,vector2)
+ {
+	sim.l2<- sum((vector1-vector2)^2)
+	return(sim.l2)
+ }
+
+
+l2.guesser <- function(target, candidates)
+  {
+	
+
+
+  }
+
 
 ##################################################
 #
