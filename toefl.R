@@ -15,10 +15,12 @@ num_choices = 4
 #the answers as a vector of strings
 answers = as.character(toefl$answer)
 
-dictionary <- read.csv("data/dictionary.csv")
+dictionary <- read.csv("data/dictionary.csv", header=FALSE)
 # dictionary = (word, vector)
 colnames(dictionary)[1] <- "word"
-
+# print(colnames(dictionary))
+# dictionary
+      
 ##################################################
 #
 #  Confirming we got names with the data
@@ -46,10 +48,16 @@ guess.first <- function(target, candidates)
 #
 ##################################################
 
+wl <- function(...){
+  cat(..., fill=TRUE); flush.console();
+}
+
 random.guesser <- function(target, candidates)
   {
+    wl("random.guesser init..")
     n.candidates <- ncol(candidates)
     random.candidate.idx <- floor( runif(1, 1, n.candidates + 1) )
+    wl("..random.guesser end.")
     return( candidates[, random.candidate.idx] )
   }
 
