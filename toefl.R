@@ -53,6 +53,16 @@ random.guesser <- function(target, candidates)
     return( candidates[, random.distractor.idx] )
   }
 
+##################################################
+#
+#  Cosine Guesser 
+#
+##################################################
+
+cosine.guesser <- function(target, candidates)
+  {
+  }
+
 
 ##################################################
 #
