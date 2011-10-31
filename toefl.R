@@ -67,9 +67,30 @@ random.guesser <- function(target, candidates)
 #
 ##################################################
 
-cosine.guesser <- function(target, candidates)
-  {
+cosine.guesser <- function(target, candidates, cosine.metric)
+{
+  generic.guesser(target, candidates, cosine.metric)
+}
+
+### Input: (string) target vector, (list) candidates.vector, distance.metric
+### Output: closest candidate
+generic.guesser <- function(target, candidates, distance.metric){
+
+  closest.candidate <- vector()
+  closest.candidate.value <- -Inf
+  
+  for(ii in 1:ncol(candidates) ){
+    this.candidate <- candidates[ii]
+    
+    candidate.similarity.value <- distance.metric(target, this.candidate)
+    if( candidate.similarity.value > closest.similarity.value ){
+      closest.candidate <- this.candidate
+      closest.candidate.value <- candidate.similarity.value
+    }
   }
+  
+  closest.candidate
+}
 
 
 ##################################################
