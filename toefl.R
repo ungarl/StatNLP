@@ -10,6 +10,8 @@
 
 toefl <- read.csv("data/toefl.csv")
 
+dictionary <- read.csv("data/dictionary.csv")
+# dictionary = (word, vector)
 
 ##################################################
 #
