@@ -33,9 +33,9 @@ names(toefl)
 #
 ##################################################
 
-guess.first <- function(target, distractors)
+guess.first <- function(target, candidates)
   {
-    return(distractors[,1]);
+    return(candidates[,1]);
   }
 
 
@@ -45,11 +45,11 @@ guess.first <- function(target, distractors)
 #
 ##################################################
 
-random.guesser <- function(target, distractors)
+random.guesser <- function(target, candidates)
   {
-    n.distractors <- ncol(distractors)
-    random.distractor.idx <- floor( runif(1, 1, n.distractors + 1) )
-    return( distractors[, random.distractor.idx] )
+    n.candidates <- ncol(candidates)
+    random.distractor.idx <- floor( runif(1, 1, n.candidates + 1) )
+    return( candidates[, random.distractor.idx] )
   }
 
 
@@ -88,3 +88,4 @@ guess <- guess.first(toefl$target,toefl[,2:5])
 evaluate(guess)
 evaluate_and_control_for_guesses(guess)
 
+guess.two <- random.guesser(toefl$target, toe
