@@ -69,7 +69,7 @@ k<-c(1,2,3)
 j<-c(4,5,6)
 
 cosine.similarity(k,j) ########## 0.9746318
-cosine.similarity(c(0,1),c(1,0) ########## should return 0
+cosine.similarity(c(0,1),c(1,0)) ########## should return 0
 cosine.similarity(k,k)  ######### should return 1
 
 
@@ -111,6 +111,14 @@ l2.similarity <- function(vector1,vector2)
 	sim.l2<- sum((vector1-vector2)^2)
 	return(sim.l2)
  }
+k<-c(1,2,3)
+
+j<-c(4,5,6)
+
+l2.similarity(k,j) ########## should be 27 
+l2.similarity(c(0,1),c(1,0)) ########## should return 2
+l2.similarity(k,k)  ######### should return 0
+
 
 
 l2.guesser <- function(target, candidates)
