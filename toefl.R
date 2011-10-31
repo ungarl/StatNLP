@@ -15,11 +15,9 @@ num_choices = 4
 #the answers as a vector of strings
 answers = as.character(toefl$answer)
 
-dictionary <- read.csv("data/dictionary.csv", header=FALSE)
+dictionary <- read.csv("data/dictionary.csv")
 # dictionary = (word, vector)
 colnames(dictionary)[1] <- "word"
-# print(colnames(dictionary))
-# dictionary
 
 #load up the three gram dic, put the words as rownames and make it look nice
 three_gram_dic = read.csv("data/dictionary.3_grams_50k.csv")
@@ -55,16 +53,10 @@ guess.first <- function(target, candidates)
 #
 ##################################################
 
-wl <- function(...){
-  cat(..., fill=TRUE); flush.console();
-}
-
 random.guesser <- function(target, candidates)
   {
-    wl("random.guesser init..")
     n.candidates <- ncol(candidates)
     random.candidate.idx <- floor( runif(1, 1, n.candidates + 1) )
-    wl("..random.guesser end.")
     return( candidates[, random.candidate.idx] )
   }
 
@@ -73,9 +65,18 @@ random.guesser <- function(target, candidates)
 #  Cosine Guesser 
 #
 ##################################################
+cosine.similarity <- function(vector1,vector2)
+ {
+	sim.cosine<- vector1%*%vector2/(sqrt(sum(vector1^2)*sum(vector2^2)))
+	return(sim.cosine)
+ }
+
 
 cosine.guesser <- function(target, candidates)
   {
+	
+
+
   }
 
 
