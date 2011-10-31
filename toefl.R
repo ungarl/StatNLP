@@ -64,6 +64,14 @@ cosine.similarity <- function(vector1,vector2)
 	return(sim.cosine)
  }
 
+k<-c(1,2,3)
+
+j<-c(4,5,6)
+
+cosine.similarity(k,j) ########## 0.9746318
+cosine.similarity(c(0,1),c(1,0) ########## should return 0
+cosine.similarity(k,k)  ######### should return 1
+
 
 cosine.guesser <- function(target, candidates)
   {
