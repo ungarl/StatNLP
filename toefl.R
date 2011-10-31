@@ -88,4 +88,6 @@ guess <- guess.first(toefl$target,toefl[,2:5])
 evaluate(guess)
 evaluate_and_control_for_guesses(guess)
 
-guess.two <- random.guesser(toefl$target, toe
+guess.two <- random.guesser(toefl$target, toefl[, 2:5])
+evaluate(guess.two)
+evaluate_and_control_for_guesses(guess.two)
