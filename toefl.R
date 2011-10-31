@@ -15,6 +15,9 @@ num_choices = 4
 #the answers as a vector of strings
 answers = as.character(toefl$answer)
 
+dictionary <- read.csv("data/dictionary.csv")
+# dictionary = (word, vector)
+colnames(dictionary)[1] <- "word"
 
 ##################################################
 #
@@ -31,9 +34,9 @@ names(toefl)
 #
 ##################################################
 
-guess.first <- function(target, distractors)
+guess.first <- function(target, candidates)
   {
-    return(distractors[,1]);
+    return(candidates[,1]);
   }
 
 
@@ -43,11 +46,11 @@ guess.first <- function(target, distractors)
 #
 ##################################################
 
-random.guesser <- function(target, distractors)
+random.guesser <- function(target, candidates)
   {
-    #
-    # insert code here
-    #
+    n.candidates <- ncol(candidates)
+    random.distractor.idx <- floor( runif(1, 1, n.candidates + 1) )
+    return( candidates[, random.distractor.idx] )
   }
 
 
@@ -86,3 +89,6 @@ guess <- guess.first(toefl$target,toefl[,2:5])
 evaluate(guess)
 evaluate_and_control_for_guesses(guess)
 
+guess.two <- random.guesser(toefl$target, toefl[, 2:5])
+evaluate(guess.two)
+evaluate_and_control_for_guesses(guess.two)
