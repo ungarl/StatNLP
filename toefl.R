@@ -40,9 +40,10 @@ guess.first <- function(target, distractors)
 
 random.guesser <- function(target, distractors)
   {
-    #
-    # insert code here
-    #
+    
+    ##
+    ## insert code here
+    ##
   }
 
 
