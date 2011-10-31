@@ -72,6 +72,9 @@ cosine.similarity(k,j) ########## 0.9746318
 cosine.similarity(c(0,1),c(1,0)) ########## should return 0
 cosine.similarity(k,k)  ######### should return 1
 
+m <- c(.2, 4, 2)
+ans <- generic.guesser(m, cbind(k,j), cosine.similarity)
+
 
 cosine.guesser <- function(target, candidates, cosine.metric)
 {
@@ -86,7 +89,7 @@ generic.guesser <- function(target, candidates, distance.metric){
   closest.candidate.value <- -Inf
   
   for(ii in 1:ncol(candidates) ){
-    this.candidate <- candidates[ii]
+    this.candidate <- candidates[, ii]
     
     candidate.similarity.value <- distance.metric(target, this.candidate)
     if( candidate.similarity.value > closest.similarity.value ){
