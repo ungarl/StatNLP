@@ -46,7 +46,8 @@ print >> sys.stderr, "done."
 
 print >> sys.stderr, "OUTPUTTING"
 
-words = newRows.keys()
+words = list(words)
+
 for word in sorted(words):
     if word in newRows:
         print '%s,%s' %(word, ','.join(newRows[word]))
