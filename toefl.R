@@ -20,7 +20,14 @@ dictionary <- read.csv("data/dictionary.csv", header=FALSE)
 colnames(dictionary)[1] <- "word"
 # print(colnames(dictionary))
 # dictionary
-      
+
+#load up the three gram dic, put the words as rownames and make it look nice
+three_gram_dic = read.csv("data/dictionary.3_grams_50k.csv")
+rownames(three_gram_dic) = three_gram_dic[, 1]
+three_gram_dic = three_gram_dic[, -1]
+colnames(three_gram_dic) = paste("vec_", seq(1 : ncol(three_gram_dic)), sep = "")
+#now you can use this like > three_gram_dic["accelerate", ] 
+
 ##################################################
 #
 #  Confirming we got names with the data
