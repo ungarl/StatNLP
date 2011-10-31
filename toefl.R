@@ -49,8 +49,18 @@ guess.first <- function(target, candidates)
 random.guesser <- function(target, candidates)
   {
     n.candidates <- ncol(candidates)
-    random.distractor.idx <- floor( runif(1, 1, n.candidates + 1) )
-    return( candidates[, random.distractor.idx] )
+    random.candidate.idx <- floor( runif(1, 1, n.candidates + 1) )
+    return( candidates[, random.candidate.idx] )
+  }
+
+##################################################
+#
+#  Cosine Guesser 
+#
+##################################################
+
+cosine.guesser <- function(target, candidates)
+  {
   }
 
 
