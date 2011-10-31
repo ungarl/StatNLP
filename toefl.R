@@ -47,9 +47,9 @@ guess.first <- function(target, distractors)
 
 random.guesser <- function(target, distractors)
   {
-    #
-    # insert code here
-    #
+    n.distractors <- ncol(distractors)
+    random.distractor.idx <- floor( runif(1, 1, n.distractors + 1) )
+    return( distractors[, random.distractor.idx] )
   }
 
 
