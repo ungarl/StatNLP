@@ -8,7 +8,7 @@
 #
 ##################################################
 
-toefl <- as.data.frame(read.csv("data/toefl.csv"))
+toefl <- as.data.frame(read.csv("data/toefl.csv",header=F))
 #number of questions and choices
 n_q = nrow(toefl)
 num_choices = 4
