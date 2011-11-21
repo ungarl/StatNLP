@@ -10,9 +10,12 @@ Jordan was here.
 Adam was here too.
 Andy was here.
 Yichao is here.
+<<<<<<< HEAD
 Joe was here.
 Weichen was here.
 
+=======
+>>>>>>> origin/master
 Joe is here.
 Andy was here (again).
 Jordan was here on November 21
@@ -22,5 +25,4 @@ This is my own branch (Adam)
 This is Paramveer (11/21/11)
 I'm here too again today Mon Oct 21.
 Adam's here too again today Mon Nov 21.
-
 

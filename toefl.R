@@ -34,6 +34,34 @@ colnames(three_gram_dic) = paste("vec_", seq(1 : ncol(three_gram_dic)), sep = ""
 
 names(toefl)
 
+##################################################
+#
+#  Generic Guesser
+#
+##################################################
+### Input: (string) target vector, (list) candidates.vector, distance.metric
+### Output: closest candidate (argmin)
+generic.guesser <- function(target, candidates, distance.metric){
+
+  closest.candidate <- vector()
+  closest.similarity.value <- -Inf
+
+  for(ii in 1:ncol(candidates) ){
+    this.candidate <- candidates[, ii]
+
+    candidate.similarity.value <- distance.metric(target, this.candidate)
+    if( candidate.similarity.value > closest.similarity.value ){
+      closest.candidate <- this.candidate
+      closest.similarity.value <- candidate.similarity.value
+    }
+  }
+
+  closest.candidate
+}
+
+
+
+
 
 ##################################################
 #
@@ -126,8 +154,8 @@ generic.guesser <- function(target, candidates, distance.metric){
       closest.similarity.value <- candidate.similarity.value
     }
   }
+}
 
-<<<<<<< HEAD
 ##################################################
 #
 #  L2 Guesser 
@@ -148,16 +176,8 @@ l2.similarity(k,k)  ######### should return 0
 
 
 
-l2.guesser <- function(target, candidates)
-  {
-	
+l2.guesser <- function(target, candidates){
 
-
-  }
-  
-=======
->>>>>>> e88c61d580d3276069232eb12c01db2cce72429a
-  closest.candidate
 }
 
 
@@ -166,6 +186,7 @@ l2.guesser <- function(target, candidates)
 #  Insert your method here
 #
 ##################################################
+
 
 
 
@@ -198,9 +219,13 @@ evaluate_and_control_for_guesses = function(guess){
 
 
 guess <- guess.first(toefl$target,toefl[,2:5])
-evaluate(guess)
-evaluate_and_control_for_guesses(guess)
+accuracy1 = evaluate(guess)
+accuracy1_ctrl = evaluate_and_control_for_guesses(guess)
 
 guess.two <- random.guesser(toefl$target, toefl[, 2:5])
-evaluate(guess.two)
-evaluate_and_control_for_guesses(guess.two)
+accuracy2 = evaluate(guess.two)
+accuracy2_ctrl = evaluate_and_control_for_guesses(guess.two)
+
+
+plot(c("first", "first_ctrl", "random", "random_ctrl"), c(accuracy1, accuracy1_ctrl, accuracy2, accuracy2_ctrl))
+
