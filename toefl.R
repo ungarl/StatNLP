@@ -133,8 +133,6 @@ l2.guesser <- function(target, candidates){
   generic.guesser(target, candidates, l2.similarity)
 }
  
-<<<<<<< HEAD
-=======
 ##################################################
 #
 #  Generic Guesser
@@ -189,7 +187,7 @@ l2.guesser <- function(target, candidates){
 #
 ##################################################
 
->>>>>>> 7697c3f0a056253c2944b92642db4e7224c3e251
+
 
 
 ##################################################
