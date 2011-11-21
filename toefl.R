@@ -126,7 +126,7 @@ generic.guesser <- function(target, candidates, distance.metric){
       closest.similarity.value <- candidate.similarity.value
     }
   }
-
+}
 
 ##################################################
 #
