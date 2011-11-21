@@ -19,6 +19,13 @@ dictionary <- read.csv("data/dictionary.csv")
 # dictionary = (word, vector)
 colnames(dictionary)[1] <- "word"
 
+#load up the three gram dic, put the words as rownames and make it look nice
+three_gram_dic = read.csv("data/dictionary.3_grams_50k.csv")
+rownames(three_gram_dic) = three_gram_dic[, 1]
+three_gram_dic = three_gram_dic[, -1]
+colnames(three_gram_dic) = paste("vec_", seq(1 : ncol(three_gram_dic)), sep = "")
+#now you can use this like > three_gram_dic["accelerate", ] 
+
 ##################################################
 #
 #  Confirming we got names with the data
@@ -110,6 +117,7 @@ cosine.similarity(k,k)  ######### should return 1
 m <- c(6, 4, 2)
 ans <- cosine.guesser(m, cbind(k,j) )
 
+
 ##################################################
 #
 #  L2 Guesser 
@@ -125,6 +133,65 @@ l2.guesser <- function(target, candidates){
   generic.guesser(target, candidates, l2.similarity)
 }
  
+<<<<<<< HEAD
+=======
+##################################################
+#
+#  Generic Guesser
+#
+##################################################
+### Input: (string) target vector, (list) candidates.vector, distance.metric
+### Output: closest candidate (argmin)
+generic.guesser <- function(target, candidates, distance.metric){
+
+  closest.candidate <- vector()
+  closest.similarity.value <- -Inf
+   
+  for(ii in 1:ncol(candidates) ){
+    this.candidate <- candidates[, ii]
+    
+    candidate.similarity.value <- distance.metric(target, this.candidate)
+    if( candidate.similarity.value > closest.similarity.value ){
+      closest.candidate <- this.candidate
+      closest.similarity.value <- candidate.similarity.value
+    }
+  }
+
+##################################################
+#
+#  L2 Guesser 
+#
+##################################################
+l2.similarity <- function(vector1,vector2)
+ {
+	sim.l2<- sum((vector1-vector2)^2)
+	return(sim.l2)
+ }
+k<-c(1,2,3)
+
+j<-c(4,5,6)
+
+l2.similarity(k,j) ########## should be 27 
+l2.similarity(c(0,1),c(1,0)) ########## should return 2
+l2.similarity(k,k)  ######### should return 0
+
+
+
+l2.guesser <- function(target, candidates)
+  {
+	
+
+
+  }
+
+
+##################################################
+#
+#  Insert your method here
+#
+##################################################
+
+>>>>>>> 7697c3f0a056253c2944b92642db4e7224c3e251
 
 
 ##################################################
