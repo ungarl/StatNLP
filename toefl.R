@@ -19,6 +19,13 @@ dictionary <- read.csv("data/dictionary.csv")
 # dictionary = (word, vector)
 colnames(dictionary)[1] <- "word"
 
+#load up the three gram dic, put the words as rownames and make it look nice
+three_gram_dic = read.csv("data/dictionary.3_grams_50k.csv")
+rownames(three_gram_dic) = three_gram_dic[, 1]
+three_gram_dic = three_gram_dic[, -1]
+colnames(three_gram_dic) = paste("vec_", seq(1 : ncol(three_gram_dic)), sep = "")
+#now you can use this like > three_gram_dic["accelerate", ] 
+
 ##################################################
 #
 #  Confirming we got names with the data
@@ -81,6 +88,7 @@ cosine.similarity(k,k)  ######### should return 1
 
 m <- c(6, 4, 2)
 ans <- cosine.guesser(m, cbind(k,j) )
+
 
 ##################################################
 #
@@ -151,6 +159,13 @@ l2.guesser <- function(target, candidates)
 >>>>>>> e88c61d580d3276069232eb12c01db2cce72429a
   closest.candidate
 }
+
+
+##################################################
+#
+#  Insert your method here
+#
+##################################################
 
 
 
