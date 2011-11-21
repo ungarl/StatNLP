@@ -1,4 +1,4 @@
-#!/usr/bin/Rscript --vanilla
+!/usr/bin/Rscript --vanilla
 ##################################################
 #
 #   Read in the data
@@ -133,8 +133,6 @@ l2.guesser <- function(target, candidates){
   generic.guesser(target, candidates, l2.similarity)
 }
  
-<<<<<<< HEAD
-=======
 ##################################################
 #
 #  Generic Guesser
@@ -156,6 +154,7 @@ generic.guesser <- function(target, candidates, distance.metric){
       closest.similarity.value <- candidate.similarity.value
     }
   }
+}
 
 ##################################################
 #
@@ -177,12 +176,9 @@ l2.similarity(k,k)  ######### should return 0
 
 
 
-l2.guesser <- function(target, candidates)
-  {
-	
+l2.guesser <- function(target, candidates){
 
-
-  }
+}
 
 
 ##################################################
@@ -191,7 +187,7 @@ l2.guesser <- function(target, candidates)
 #
 ##################################################
 
->>>>>>> 7697c3f0a056253c2944b92642db4e7224c3e251
+
 
 
 ##################################################
