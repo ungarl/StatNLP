@@ -126,6 +126,36 @@ generic.guesser <- function(target, candidates, distance.metric){
     }
   }
 
+<<<<<<< HEAD
+##################################################
+#
+#  L2 Guesser 
+#
+##################################################
+l2.similarity <- function(vector1,vector2)
+ {
+	sim.l2<- sum((vector1-vector2)^2)
+	return(sim.l2)
+ }
+k<-c(1,2,3)
+
+j<-c(4,5,6)
+
+l2.similarity(k,j) ########## should be 27 
+l2.similarity(c(0,1),c(1,0)) ########## should return 2
+l2.similarity(k,k)  ######### should return 0
+
+
+
+l2.guesser <- function(target, candidates)
+  {
+	
+
+
+  }
+  
+=======
+>>>>>>> e88c61d580d3276069232eb12c01db2cce72429a
   closest.candidate
 }
 
