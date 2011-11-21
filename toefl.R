@@ -51,8 +51,18 @@ guess.first <- function(target, candidates)
 random.guesser <- function(target, candidates)
   {
     n.candidates <- ncol(candidates)
-    random.distractor.idx <- floor( runif(1, 1, n.candidates + 1) )
-    return( candidates[, random.distractor.idx] )
+    random.candidate.idx <- floor( runif(1, 1, n.candidates + 1) )
+    return( candidates[, random.candidate.idx] )
+  }
+
+##################################################
+#
+#  Cosine Guesser 
+#
+##################################################
+
+cosine.guesser <- function(target, candidates)
+  {
   }
 
 
@@ -70,16 +80,21 @@ random.guesser <- function(target, candidates)
 #
 ##################################################
 
+#this evaluate the percentage correct
 evaluate <- function(guess_vec)
   {
 	  sum(guess_vec == answers) / n_q
   }
 
-  evaluate_and_control_for_guesses = function(guess_vec){
-	prop_corr = evaluate(guess_vec)
+#this evaluates the percentage correct controlling for guessing given the 
+#standard formula found on p220 of LSA, Landauer & Dumais, 1997
+evaluate_and_control_for_guesses = function(guess){
+	prop_corr = evaluate(guess)
 	prop_chance = n_q * (1 / num_choices) / n_q
-	(prop_corr - prop_chance) / (1 - prop_chance)
+	max((prop_corr - prop_chance) / (1 - prop_chance), 0)
 }
+
+
 ###################################################
 #
 #  Main code
@@ -91,4 +106,6 @@ guess <- guess.first(toefl$target,toefl[,2:5])
 evaluate(guess)
 evaluate_and_control_for_guesses(guess)
 
-guess.two <- random.guesser(toefl$target, toe
+guess.two <- random.guesser(toefl$target, toefl[, 2:5])
+evaluate(guess.two)
+evaluate_and_control_for_guesses(guess.two)
