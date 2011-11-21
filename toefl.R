@@ -1,4 +1,4 @@
-#!/usr/bin/Rscript --vanilla
+!/usr/bin/Rscript --vanilla
 ##################################################
 #
 #   Read in the data
