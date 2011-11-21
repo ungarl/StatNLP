@@ -89,6 +89,7 @@ cosine.similarity(k,k)  ######### should return 1
 m <- c(6, 4, 2)
 ans <- cosine.guesser(m, cbind(k,j) )
 
+
 ##################################################
 #
 #  L2 Guesser 
@@ -158,6 +159,13 @@ l2.guesser <- function(target, candidates)
 >>>>>>> e88c61d580d3276069232eb12c01db2cce72429a
   closest.candidate
 }
+
+
+##################################################
+#
+#  Insert your method here
+#
+##################################################
 
 
 
