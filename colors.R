@@ -21,13 +21,13 @@ print(paste('plot_PC12=', plot_PC12, ' simple_format=', simple_format, ' use_all
 
 # pick a source file
 
-filename = "data/dictionary.3_grams_PHC_80k.csv"
+filename = "data/pretty_3_grams_PHC_50k_30.csv"
 if(use_all_words) filename = "inderpreet/WSD.csv" 
 #if(simple_format) filename = "Extractions/happy_sad.txt"
 #if(simple_format) filename = "Extractions/country_city.txt"
 #if(simple_format) filename = "Extractions/country_city.txt"
-if(simple_format) filename = "Extractions/connl_states.txt"
 #if(simple_format) filename = "Extractions/cat_mouse.txt"
+if(simple_format) filename = "Extractions/connl_states.txt"
 
 
 # pick the words to be plotted (see "word_lists.txt")
