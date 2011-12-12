@@ -1,0 +1,281 @@
+# LISTS of words for plotting
+
+#colors
+purple red blue green yellow
+black white blue red yellow green magenta cyan purple
+# colors/pronouns: perfect separation
+purple red blue green yellow I you he she
+
+# does not find enough to be interesting,  plus smile is often a noun
+cry laugh frown smile snarl sneer
+
+# pronouns: divides by part of speech
+i you he she they we us them him her our his
+# not so clear
+his her my their our your a the some
+# "her" has multiple labels?
+I you she he we they
+
+# dimensions = positive/negative and mild/extreme???
+good bad terrible horrible great wonderful mediocre fanstastic
+# poor adequate  awesome  outstanding (ambiguous) "miserable" (different POS's)
+
+# months: might have signal? but not much
+january february march april june july august september october november december
+february july august august september october november december
+# "may" is ambigous (what about "march"?) january seems to be an outlier; why?
+
+# divides nouns and verbs
+house river cat car sleep eat push
+
+# looks OK
+tree forest shrub orchid rock stone dirt
+# too bad we don't have "shrub" or "orchid"
+# is "bush" ambigous? ("flower" needs POS)
+
+# sizes: this does not look good
+small large tiny huge big colossal giant little
+# "medium" looks different?
+
+# numbers: not bad!
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 20 21
+# numbers (as words): perfect first two PCs; not bad now
+one two three four five six seven eight nine ten
+one two three four five six seven eight nine ten 1 2 3 4 5 6 7 8 9 10
+
+# gives decent separation of sports and business
+# "fire" is ambiguous  as is "dive"
+hire purchase hit swim jump throw catch buy sell purchase trade exchange
+hockey baseball soccer golf basketball goalie money dollars euro hire yen purchase hit swim jump throw catch buy sell ibm purchase leverage trade exchange profit price
+
+# sizes are random (because some are absolutes and some are are relative?)
+little tiny huge big small large colossal giant medium-sized undersized enormous microscopic
+# "little" is a different POS
+
+# years: works nicely
+1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009
+
+# female names
+mary patricia tricia linda barbara elizabeth liz betsy jennifer maria susan margaret dorothy lisa nancy karen betty helen
+
+# male names
+john robert bob michael mike william david richard charles joseph joe thomas tom christopher daniel dan paul donald don george
+# can't use "bill" or "dick"
+
+# names: gives decent separation
+mary patricia tricia linda barbara elizabeth liz betsy jennifer maria susan margaret dorothy lisa nancy karen betty helen john robert bob michael mike william david richard charles joseph joe thomas tom christopher daniel dan paul donald george     
+# better to drop "bob"  "don"  maybe "joe"??
+
+# emotions: no signal? - does not currently find most of the words
+happy sad mad angry lonely
+happy joyous pleased sad miserable displeased unhappy angry
+happiness joy pleasure sadness misery displeasure unhappiness anger
+# emotions these work badly
+anger fear disgust happiness sadness surprise amusement contempt contentment embarrassment excitement guilt relief satisfaction shame
+anger fear disgust happiness sadness surprise
+# emotions: try removing the ones that can be verbs: fear  disgust  surprise (
+anger happiness sadness amusement contempt contentment embarrassment excitement guilt relief satisfaction shame
+# emotions: also note that we "get" "relief" and "satisfaction"  but not the others  -- still crappy
+anger happiness sadness amusement contempt contentment embarrassment excitement guilt shame
+
+# zip codes: none of these are found
+10650 12401 21701 30309 30324 32801 55057 60611 90046 92130
+
+# birds: good
+bluejay parrot blackbird eagle hummingbird pigeon wren pelican parakeet finch
+# animals: interesting  but why is cow near mouse?
+dog cat mouse rat horse cow giraffe zerbra elephant hamster tiger monkey
+# insects plural: works great excipet lice
+ants aphids lice fleas spiders beetles moths houseflies weevils caterpillars
+# insects singular
+ant aphid louse flea spider beetle moth housefly weevil caterpillar
+
+#weapons
+gun pistol rifle weapon bomb grenade bullet missle rocket
+
+#materials
+steel iron copper brass wood plastic aluminum
+
+# nada
+a b c d e f g
+
+#lengths: random
+inch foot mile cm meter km
+
+# Seperates into initials and real words
+feb apr jul jun aug sept oct nov february march april june july august september october november december
+
+# too diverse
+bishop pope president senator congressman chairman leader vice-president secretary commander chief officer aide manager
+
+# this looks reasonable
+bishop pope president senantor congressman chairman vice-president commander chief
+bishop pope deacon rabbi president senator congressman chairman vice-president mayor governor
+
+
+##########################################################################################
+##########################################################################################
+
+purple red blue green yellow
+black white blue red yellow
+# colors: perfect separation
+purple red blue green yellow I you he she
+
+# does not find enough to be interesting  plus smile is often a noun
+cry laugh frown smile snarl sneer
+
+# pronouns: divides by part of speech (need "hers"?)
+i you he she they we us them him her our his
+# not so clear
+his her my their our your a the some
+# "her" has multiple labels?
+I you she he we they
+
+# dimensions = positive/negative and mild/extreme???
+good bad terrible horrible great wonderful mediocre fanstastic
+# poor adequate  awesome  outstanding (ambiguous) "miserable" (different POS's)
+
+# months: might have signal? but not much
+january february march april june july august september october november december
+february july august august september october november december
+# "may" is ambiguous (what about "march"?) january seems to be an outlier; why?
+
+# days
+friday monday thursday wednesday tuesday saturday sunday weekends weekday weekdays sundays saturdays
+friday monday thursday wednesday tuesday saturday sunday
+fridays mondays thursdays wednesdays tuesdays saturdays sundays
+
+# divides nouns and verbs
+house river cat car sleep eat push
+house home dog truck boat word river cat car sleep eat push drink listen carry talk disagree agree
+
+# looks OK
+tree forest shrub orchid rock stone dirt
+# too bad we don't have "shrub" or "orchid"
+# is "bush" ambiguous? ("flower" needs POS)
+
+# sizes: this does not look good
+small large tiny huge big colossal giant little
+# "medium" looks different?
+
+# numbers: not bad!
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 20 21
+# numbers (as words): perfect first two PCs; not bad now
+one two three four five six seven eight nine ten
+one two three four five six seven eight nine ten 1 2 3 4 5 6 7 8 9 10
+
+# gives decent separation of sports and business
+# "fire" is ambiguous  as is "dive"
+hire purchase hit swim jump throw catch buy sell purchase trade exchange
+hockey baseball soccer golf basketball goalie money dollars euro hire yen purchase hit swim jump throw catch buy sell ibm purchase leverage trade exchange profit price
+
+# sizes are random (because some are absolutes and some are are relative?)
+little tiny huge big small large colossal giant medium-sized undersized enormous microscopic
+# "little" is a different POS
+
+# years: works nicely
+1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009
+
+# female names
+mary patricia tricia linda barbara elizabeth liz betsy jennifer maria susan margaret dorothy lisa nancy karen betty helen
+
+# male names
+john robert bob michael mike william david richard charles joseph joe thomas tom christopher daniel dan paul donald don george     
+# can't use "bill" or "dick"
+
+# male and female names: gives decent separation
+mary patricia tricia linda barbara elizabeth liz betsy jennifer maria susan margaret dorothy lisa nancy karen betty helen john robert bob michael mike william david richard charles joseph joe thomas tom christopher daniel dan paul donald george     
+# better to drop "bob"  "don"  maybe "joe"??
+
+# emotions: no signal? - does not currently find most of the words
+happy sad mad angry lonely
+happy joyous pleased sad miserable displeased unhappy angry
+happiness joy pleasure sadness misery displeasure unhappiness anger
+# emotions these work badly
+anger fear disgust happiness sadness surprise amusement contempt contentment embarrassment excitement guilt relief satisfaction shame
+anger fear disgust happiness sadness surprise
+# emotions: try removing the ones that can be verbs: fear  disgust  surprise (
+anger happiness sadness amusement contempt contentment embarrassment excitement guilt relief satisfaction shame
+# emotions: also note that we "get" "relief" and "satisfaction"  but not the others  -- still crappy
+anger happiness sadness amusement contempt contentment embarrassment excitement guilt shame
+
+# zip codes: none of these are found
+10650 12401 21701 30309 30324 32801 55057 60611 90046 92130
+
+# stuff from Brown et al; no pattern
+water gas coal liquid acid sand carbon steam shale iron
+
+# birds: good
+bluejay parrot blackbird eagle hummingbird pigeon wren pelican parakeet finch
+# animals: interesting  but why is cow near mouse?
+dog cat mouse rat horse cow giraffe zerbra elephant hamster tiger monkey
+# insects plural: works great excipet lice
+ants aphids lice fleas spiders beetles moths houseflies weevils caterpillars
+# insects singular
+ant aphid louse flea spider beetle moth housefly weevil caterpillar
+
+# materials dont work
+steel iron copper brass wood plastic aluminum
+
+# letters dont work
+a b c d e f g
+
+# lengths dont work
+inch foot mile cm meter km
+
+# words not in to 10k
+happy sad depression ecstatic unhappy
+
+#  Seperates into initials and real words
+feb apr jul jun aug sept oct nov february march april june july august september october november december
+
+# at least mouse and rat are close
+dog cat mouse rat elephant horse cow giraffe zerbra elephant hamster
+dog cat mouse rat gerbil hamster
+
+# doesn't find enough for any words to be similar
+gun pistol rifle weapon bomb grenade bullet missle rocket
+
+four red mouse gun president big coat
+
+# leaders -- too diverse
+bishop pope president senantor congressman chairman leader vice-president secretary commander chief officer aide manager
+# this looks reasonable
+bishop pope president senantor congressman chairman vice-president commander chief
+category_names='(bishop pope deacon rabbi president senator congressman chairman vice-president mayor governor
+#
+
+# sweet vs savory - OK
+pudding cake cookie candy dessert cheesecake hamburger steak lasagna pizza chicken pork
+
+# food vs not food
+carrot lettuce hamburger steak sandwich salad coat hat gloves mittens
+carrots lettuce hamburger steak sandwich salad coke pepsi wine lemonade coffee tea juice milk
+# too many dimensions to capture
+carrots lettuce hamburger steak sandwich salad coke pepsi wine lemonade coffee tea juice milk
+
+# animate vs inamimate
+woman man girl boy dog cat elephant hat glove coat book computer paper pen pencil
+
+# vehicles -- no signal?
+car truck airplane helicopter rocket boat sailboat canoe kayak missile motorcycle bicycle
+# "ship" and "train" are verbs!!!! "plane" is ambiguous
+
+
+home truck boat word river cat car sleep eat push drink listen carry talk disagree agree
+one two three four five six seven eight nine ten
+i you he she they we us them him her our his
+mary patricia tricia linda barbara elizabeth liz betsy jennifer maria susan margaret dorothy lisa nancy karen betty helen john robert bob michael mike william david richard charles joseph joe thomas tom christopher daniel dan paul donald george     
+carrots lettuce hamburger steak sandwich salad coke pepsi wine lemonade coffee tea juice milk
+mary patricia tricia linda barbara elizabeth liz betsy jennifer maria susan margaret dorothy lisa nancy karen betty helen john robert bob michael mike william david richard charles joseph joe thomas tom christopher daniel dan paul donald george philadelphia york washington england france germany london amsterdam tokio francisco antonio hamshire mexico jersey     
+
+
+#Brown clusters (note Boss=mother)
+man woman boy girl lawyer doctor guy farmer teacher citizen mother wife father son husband brother daughter sister boss uncle
+
+#Two more brown clusters
+pressure temperature permeability density porosity stress velocity viscosity gravity tension feet miles pounds degrees inches barrels tons acres meters bytes
+
+# A  brown cluster by itself
+feet miles pounds degrees inches barrels tons acres meters bytes
+
