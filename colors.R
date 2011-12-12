@@ -1,5 +1,7 @@
-# plots the first couple of PCs of a selected set of words
-# extracted from a file of the "pretty" format
+# colors.R
+# Plots the first couple of PCs of the eigenfeatures of a selected set of words.
+# Supoorts two different formats, Dean's "pretty" format (which isn't)
+# and Lyle's "simple" format (which is)
 
 # TODO: print a reasonable error message if not enough words are found
 
@@ -9,11 +11,11 @@
 #
 plot_PC12 = TRUE		# print 1st and 2nd PCs
 plot_PC23 = FALSE		# print 2nd and 3rd PCs
-plot_background = FALSE         # plot the background (or not)
+plot_background = FALSE         # plot the background
 use_all_words = FALSE           # select only the words specified in read_colors if "FALSE"
-simple_format = FALSE	        # reads all words, no header, just has word, followed by feature vectors, space delimited
-plot_3d = FALSE                 # Select to use interactive 3D view
-sample.size = 80                # randomly pick this many items to plot
+simple_format = FALSE	        # reads all words, no header, just each word followed by the eigenfeatures, space delimited
+plot_3d = FALSE                 # use interactive 3D view
+sample.size = 80                # randomly pick sample.size items to plot for the simple_format case
 #
 #
 ##################################################################################
@@ -30,9 +32,9 @@ if(use_all_words) filename = "inderpreet/WSD.csv"
 if(simple_format) filename = "Extractions/connl_states.txt"
 
 
-# pick the words to be plotted (see "word_lists.txt")
+# pick the words to be plotted (see "categories.txt" for examples)
 test_words = 'man woman boy girl lawyer doctor guy farmer teacher citizen mother wife father son husband brother daughter sister boss uncle pressure temperature permeability density porosity stress velocity viscosity gravity tension feet miles pounds degrees inches barrels tons acres meters bytes'
-test_words = 'mary patricia tricia linda barbara elizabeth liz betsy jennifer maria susan margaret dorothy lisa nancy karen betty helen john robert bob michael mike william david richard charles joseph joe thomas tom christopher daniel dan paul donald george'
+#test_words = 'mary patricia tricia linda barbara elizabeth liz betsy jennifer maria susan margaret dorothy lisa nancy karen betty helen john robert bob michael mike william david richard charles joseph joe thomas tom christopher daniel dan paul donald george'
 #test_words = 'area0 area1 area2 power0 power1 power2'
 #if(simple_format) test_words = 'exchange bill'
 #if(simple_format) test_words = 'ask management'
