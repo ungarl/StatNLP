@@ -31,14 +31,37 @@ if(use_all_words) filename = "inderpreet/WSD.csv"
 #if(simple_format) filename = "Extractions/cat_mouse.txt"
 if(simple_format) filename = "Extractions/connl_states.txt"
 
+test_words = c()
+if( length(test_words) == 0 ){
+  blue_test_words =
+    'aggressive angst anguished anxious ashamed bugged chagrin contemptuous cynical desolate despairing disappointing disconcerted discontent discontented disgust disgusting disheartened displeased displeasure dissatisfaction distressed distressing doleful dread dreary edgy fuming gloomy glum grief haughty horrible indignant infuriated insulted irritable loathed melancholy mournful ornery perturbed pessimistic poorly remorse remorseful ridiculed sad sadness shameful snappy sorrowful startled terrified uneasy unenthusiastic ungrateful unhappiness unpleasant vexation vulnerable wary woeful wrath wrathful'
+  blue_test_words = strsplit(blue_test_words, " ")[[1]]
+  red_test_words =
+    'blissful carefree cheerful cheerfulness cheery contented cozy dazzled delightful ecstatic enthusiastic excellent fabulous festive gleeful grateful gratified gratitude grinning incredible jovial jubilant optimism optimistic peaceful perky radiant smiling superb wonderful'
+  red_test_words = strsplit(red_test_words, " ")[[1]]
+  test_words <- paste( c(blue_test_words, red_test_words), collapse=" ")
+}
 
 # pick the words to be plotted (see "categories.txt" for examples)
-test_words = 'man woman boy girl lawyer doctor guy farmer teacher citizen mother wife father son husband brother daughter sister boss uncle pressure temperature permeability density porosity stress velocity viscosity gravity tension feet miles pounds degrees inches barrels tons acres meters bytes'
+test_words =
+'man woman boy girl lawyer doctor guy farmer teacher citizen mother wife father son husband brother daughter sister boss uncle pressure temperature permeability density porosity stress velocity viscosity gravity tension feet miles pounds degrees inches barrels tons acres meters bytes'
+test_words =
+'affection affectionate altruism amity amorous approachable befriended beloved bonded brotherly charisma allegiance ardent ardor aspiration aspire devout doubtless embodiment empowered essence marrow'
+
 #test_words = 'mary patricia tricia linda barbara elizabeth liz betsy jennifer maria susan margaret dorothy lisa nancy karen betty helen john robert bob michael mike william david richard charles joseph joe thomas tom christopher daniel dan paul donald george'
 #test_words = 'area0 area1 area2 power0 power1 power2'
 #if(simple_format) test_words = 'exchange bill'
 #if(simple_format) test_words = 'ask management'
 #if(simple_format) test_words = 'work management'
+
+colorVector = c()
+FindWords <- function(word.list, colors.words){
+  word_indices <- c()
+  for( ii in 1:length(word.list) ){
+    word_indices <- c( word_indices, which(word.list[ii] == as.character(colors.words$Word_3PHC2)) )
+  }
+  word_indices
+}
 
 if(! simple_format)
   {
@@ -46,6 +69,9 @@ if(! simple_format)
     if(use_all_words) system(paste("cp ",filename," colors.csv"))
 
     colors = read.csv("colors.csv",header=T)   # selected words
+    colorVector = rep("black", length(colors$Word_3PHC2))
+    colorVector[FindWords(blue_test_words, colors)] = "blue"
+    colorVector[FindWords(red_test_words, colors)] = "red"
     all.words = read.csv(filename,header=T)
   }
 
@@ -114,9 +140,9 @@ if(!plot_3d)
     if (plot_PC23) 
           plot(c.mat %*% basis %*% scaling,col="white",asp=1,xlab="PC 2",ylab="PC 3")
     # plot the names of the words (TODO: make option to plot colored dots)
-    if(!plot_background) 
-          text(c.mat %*% basis  %*% scaling,labels=colors[,1],col="black",cex=1.5)
-
+    if(!plot_background) {
+          text(c.mat %*% basis  %*% scaling,labels=colors[,1],col=colorVector,cex=1.5)
+        }
     # Plot invisible points 
     if( plot_background) {
       values <- all.mat %*% basis  %*% scaling
