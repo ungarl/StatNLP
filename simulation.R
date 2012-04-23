@@ -1,5 +1,5 @@
+# Stolen from handout
 
-<<fig=TRUE,width=4.5,height=4.5,echo=FALSE>>=
 
     c1 <- rexp(300)*2
     c2 <- rexp(300)*2
@@ -9,14 +9,9 @@
     range <- c(min(c(x,y)),max(c(x,y)))
     plot(x,y,col="blue",xlim=range,ylim=range)
 
-@
-
-<<fig=TRUE,width=4.5,height=4.5,echo=FALSE>>=
-
     theta = 2*pi*(seq(0,1,.001))
     x <- sin(theta)
     y <- cos(theta)
     f <- x^3 + y^3
     plot(x,y,type="l",col="blue")
     lines(f*x, f*y,type="l",col="red")
-@
