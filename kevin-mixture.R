@@ -1,6 +1,9 @@
 # Here I follow Algorithm A very closely, in the context of a document word-frequency modeling problem
 
 library(MASS)
+# command to install - lukasz
+# install.packages("Combinations", repos = "http://www.omegahat.org/R", type="source")
+
 library(Combinations)
 
 # Allow things to be reproducible 
@@ -152,7 +155,8 @@ for (i in 1:num.eta.samples) {
   m <- dfm
   m$M <- est$M
   predictions <- t(apply(docs, 2, predict.topic, m))[,"topic"]
-  perms <- permutations(dfm$k)
+  perms <- NULL
+  ##perms <- permutations(dfm$k)
   perm.accurcies <- apply(perms, 1, function(perm) {
     mean(match(predictions, perm) == topics)
   })
