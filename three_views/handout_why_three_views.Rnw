@@ -1,0 +1,209 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[usenames]{color}
+\newcommand{\probe}[0]{{\textcolor{red}\eta}}
+
+%\newcommand{\diag}{\mathrm{diag}}
+\usepackage{ amssymb}
+\newcommand{\Diag}{\mathrm{diag}}
+
+\newcommand{\DIAG}{\setlength{\unitlength}{0.76em}\hbox{$\Box\vspace{-0.25em}\hspace{-.045em}$\line(-1,1){1}\hspace{.2em}}}
+\newcommand{\diag}{\DIAG}
+
+
+
+\usepackage[left=1.5cm,top=1cm,bottom=.5cm,right=1.5cm,nohead,nofoot]{geometry}
+
+\pagestyle{empty}
+\begin{document}
+\centerline{\LARGE\bf Why three views?}
+
+
+\section*{Independent components}
+
+$X_1, \ldots, X_k$ are iid, with mean $\mu_i$ standard deviation
+$\sigma_i$.  Define $Z_i = (X_i - \mu_i)/\sigma_i$.
+\begin{minipage}{3.5in}
+\begin{eqnarray*}
+E(Z_i^3) & \equiv & K_i \\
+E(Z_i Z_j Z_k) & = & E(Z_i)E(Z_j)E(Z_k) = 0 \\
+E(Z_i Z_j^2) & = & E(Z_i)E(Z_j^2) = 0
+\end{eqnarray*}
+So,
+\begin{displaymath}
+E(Z Z^\top Z^\top) \probe = \Diag(K) \Diag(\probe) = \DIAG K \DIAG \probe
+\end{displaymath}
+\end{minipage}
+\hspace{3em}
+\begin{minipage}{3.5in}
+<<fig=TRUE,width=4.5,height=4.5,echo=FALSE>>=
+
+    c1 <- rexp(300)*2
+    c2 <- rexp(300)*2
+    theta <- .9
+    x <- sin(theta)*c1 + cos(theta)*c2
+    y <- sin(theta)*c2 - cos(theta)*c1
+    range <- c(min(c(x,y)),max(c(x,y)))
+    plot(x,y,col="blue",xlim=range,ylim=range)
+
+@
+\vspace{-.5in}
+\end{minipage}
+\section*{K-means}
+Let $Z$ be a random corner of the simplex.  So $P(Z = e_i) = p_i$
+where
+\begin{displaymath}
+e_i = [0,0,0,\ldots,1,\ldots,0,0,0]^\top
+\end{displaymath}
+ and $p_i$ is a probability vector.  Then
+\begin{displaymath}
+E(Z Z^\top Z^\top) \probe = \Diag(p) \Diag(\probe) = \DIAG p \DIAG \probe
+\end{displaymath}
+
+\section*{LDA: $D$ has a Dirichlet distribution.}
+
+Dirichlet($\alpha$): $D$ lives on the simplex (basically a multi-variate beta
+ distribution).     Define $Z = D - \mu$
+ so that $E(Z) = 0$.   The variance is $\Sigma \equiv EZZ^\top$ and
+skewedness is $K(\probe) \equiv E(Z  Z^\top Z^\top)\probe$.
+\begin{eqnarray*}
+%\alpha & = &  \alpha_0 \mu \\
+%\Diag(\alpha) & = & \alpha_0 (\alpha_0 + 1) \Sigma - \mu \mu^\top\\
+\Diag(\alpha)\Diag(\probe) & = & \alpha_0(\alpha_0 + 1)(\alpha_0 + 2)
+K + (3\alpha_0^2 + \alpha_0) ED D^\top D^\top \probe + 2\mu\mu^\top\mu^\top\probe
+\end{eqnarray*}
+Where we needed $\alpha_0 \equiv {\bf 1}^\top \alpha$ to generate the equation.
+\section*{All three models have same structure}
+
+Since the diag operator is coordinate based, in all three cases we can
+ find the right coordinate system by empirically estimating:
+\begin{itemize}
+\item  $\DIAG K \DIAG$ for independent components,
+\item  $\DIAG p \DIAG$  for K-means,
+\item $\DIAG \alpha\DIAG$ for  LDA.
+\end{itemize}
+
+\newpage
+{\bf \large From moments of $D$ how can we find the pure directions?}
+
+\hspace{1em}
+
+\centerline{\bf Estimation via maximizing 3rd moment}
+\noindent
+\begin{minipage}{4in}
+We can find the vectors $\eta$ which maximize $E(\eta^\top D)^3$.  The
+local maximum of this will be the coordinate directions.
+\begin{eqnarray*}
+E(\eta^\top D)^3 & = & \eta \diag(K) \diag(\eta)\eta \\
+           & = & \sum_i \eta^3_i K_k
+\end{eqnarray*}
+Now maximizing subject to the constraint that $|\eta|_2 = 1$ and we
+recover the coordinate directions.
+\end{minipage}
+\hspace{2em}
+\begin{minipage}{3.5in}
+<<fig=TRUE,width=4.5,height=4.5,echo=FALSE>>=
+
+    theta = 2*pi*(seq(0,1,.001))
+    x <- sin(theta)
+    y <- cos(theta)
+    f <- x^3 + y^3
+    plot(x,y,type="l",col="blue")
+    lines(f*x, f*y,type="l",col="red")
+@
+\vspace{-.25in}
+\end{minipage}
+
+\centerline{\bf Estimation via Eigenvector method}
+We can use an arbitary direction as a probe and the compute the
+eigenvectors.  So fix $\probe$ and then find $\xi$ which solves:
+\begin{eqnarray*}
+\diag(K) \diag(\probe) \xi & = & \lambda \xi\\
+\end{eqnarray*}
+If $\xi$ is a coordinate direction then the left hand side is
+$K_i\probe_i\xi$ and so solves the equation for $\lambda =
+K_i\probe_i$.
+
+\section*{One, Two and Three views}
+The problem now is to estimate the 3 moments needed using data.  Our
+data will be
+\begin{displaymath}
+X = O Z + \epsilon
+\end{displaymath}
+\textcolor{blue}{\hrule}
+\begin{minipage}{3.5in}
+\subsection*{One view assumptions:}
+\begin{itemize}
+\item  $\epsilon$'s are homoskadastic
+\item We know the variance of $\epsilon$
+\item $\epsilon$ is normal
+\end{itemize}
+Then we can estimate all three moments.
+\end{minipage}
+\textcolor{blue}{
+\rule[-1.5in]{1pt}{3.25in}}\hspace{1em}
+\begin{minipage}{3.5in}
+\subsection*{Two view assumptions:}
+\begin{itemize}
+\item $\epsilon$'s are homoskadastic
+\end{itemize}
+Then we can estimate all three moments.
+
+\subsection*{Three view assumptions:}
+\begin{itemize}
+\item Nothing!
+\end{itemize}
+Then we can estimate all three moments.
+\end{minipage}
+\end{document}
+\newpage
+
+\section*{Details}
+
+The three main moments: (see calcuations done by Sham and others)
+\begin{eqnarray*}
+\mu \equiv E(D)        &= & \frac{\alpha}{\alpha_0} \\
+E(DD^\top) & = & \frac{\DIAG(\alpha) +
+\alpha \alpha^\top}{\alpha_0(\alpha_0+1)}\\
+E(DD^\top D^\top)\probe & = &
+\frac{2 \DIAG(\alpha)\DIAG(\probe) +
+\alpha\alpha^\top\alpha^\top\probe+
+\DIAG(\alpha)\alpha^\top\probe + \DIAG(\alpha)\probe \alpha^\top +
+\alpha \DIAG(\alpha)\probe
+}{\alpha_0(\alpha_0+1)(\alpha_0+2)}
+\end{eqnarray*}
+And with $Z = D - \mu$ the central moments are:
+\begin{eqnarray*}
+E(Z)        &= & 0 \\
+\Sigma \equiv E(ZZ^\top) & = & \frac{\alpha_0 \DIAG(\alpha) -
+\alpha \alpha^\top}{\alpha_0^2(\alpha_0+1)}\\
+K\probe \equiv E(ZZ^\top Z^\top)\probe & = &
+\frac{2 \alpha_0^2\DIAG(\alpha)\DIAG(\probe)
+- (\alpha_0+1)^2 \alpha\alpha^\top\alpha^\top\probe
+-(\alpha_0^2+2\alpha_0-1)\left(\DIAG(\alpha)\alpha^\top\probe + \DIAG(\alpha)\probe \alpha^\top +
+\alpha \DIAG(\alpha)\probe \right)
+}{\alpha_0^3(\alpha_0+1)(\alpha_0+2)}
+\end{eqnarray*}
+Where we have used:%
+\footnote{follows from vectorizing:
+\begin{eqnarray*}
+ED^3 & = & E(Z + \mu)^3 \\
+ & = & E(Z^3) + 3 E(Z^2) \mu + 3 E(Z)\mu^2 + \mu^3 \\
+ & = & E(Z^3) + 3 Var(X) \mu + \mu^3 \\
+\end{eqnarray*}}
+\begin{eqnarray*}
+E(DD^\top D^\top) \probe
+ & = & K\probe + \DIAG\mu \Sigma \probe + \Sigma
+\DIAG\mu\probe +   \DIAG\mu \probe \Sigma + \mu \mu^\top \mu^\top \probe
+\end{eqnarray*}
+This then allows us to generate the following useful quantities:
+\begin{eqnarray*}
+\alpha & = & \alpha_0 \mu \\
+\DIAG\alpha & = & \alpha_0(\alpha_0+1)\left(\Sigma + \alpha_0\mu\mu^\top\right)\\
+\DIAG\alpha\DIAG & = &
+\frac{\alpha_0(\alpha_0+1)(\alpha_0+2)}{2}\left(K + (1+1/\alpha_0)^3\mu\mu^\top\mu^\top +\cdots +\right)\\
+\end{eqnarray*}
+
+
+
+\end{document}
