@@ -9,9 +9,3 @@
     range <- c(min(c(x,y)),max(c(x,y)))
     plot(x,y,col="blue",xlim=range,ylim=range)
 
-    theta = 2*pi*(seq(0,1,.001))
-    x <- sin(theta)
-    y <- cos(theta)
-    f <- x^3 + y^3
-    plot(x,y,type="l",col="blue")
-    lines(f*x, f*y,type="l",col="red")
