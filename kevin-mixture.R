@@ -155,8 +155,7 @@ for (i in 1:num.eta.samples) {
   m <- dfm
   m$M <- est$M
   predictions <- t(apply(docs, 2, predict.topic, m))[,"topic"]
-  perms <- NULL
-  ##perms <- permutations(dfm$k)
+  perms <- permutations(dfm$k)
   perm.accurcies <- apply(perms, 1, function(perm) {
     mean(match(predictions, perm) == topics)
   })
@@ -188,7 +187,7 @@ M.hat.kls <- apply(M.hats, 3, function(M) {
   kl.divergence(dfm$M %*% diag(dfm$w), M %*% diag(dfm$w))
 })
 
-pdf(file="writeup/accuracies.pdf", height=3.2, width=9)
+pdf(file="accuracies.pdf", height=3.2, width=9)
 par(mar=c(4,4,2,1), mgp=c(2,0.8,0), cex.axis=0.75, mfcol=c(1,2), xpd=NA)
 hist(accuracies, main="", xlab="topic-prediction accurracy", col="gray80", border="gray50")
 text(0.55, 70, labels="(a)")
@@ -198,5 +197,3 @@ dev.off()
 
 
 # END
-
-
