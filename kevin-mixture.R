@@ -1,6 +1,9 @@
 # Here I follow Algorithm A very closely, in the context of a document word-frequency modeling problem
 
 library(MASS)
+# command to install - lukasz
+# install.packages("Combinations", repos = "http://www.omegahat.org/R", type="source")
+
 library(Combinations)
 
 # Allow things to be reproducible 
@@ -184,7 +187,7 @@ M.hat.kls <- apply(M.hats, 3, function(M) {
   kl.divergence(dfm$M %*% diag(dfm$w), M %*% diag(dfm$w))
 })
 
-pdf(file="writeup/accuracies.pdf", height=3.2, width=9)
+pdf(file="accuracies.pdf", height=3.2, width=9)
 par(mar=c(4,4,2,1), mgp=c(2,0.8,0), cex.axis=0.75, mfcol=c(1,2), xpd=NA)
 hist(accuracies, main="", xlab="topic-prediction accurracy", col="gray80", border="gray50")
 text(0.55, 70, labels="(a)")
@@ -194,5 +197,3 @@ dev.off()
 
 
 # END
-
-
