@@ -2,8 +2,8 @@
 #data where the hidden state and observations are all discrete. It #seems that when the state is 3 dimensional and observation is 4 #or 5 is algorithm can recover the some columns of the observation #matrix, up to a permutation of columns(works most of the time, #when you can figure out some column in the estimator corresponds #to some column in the truth by merely looking at the two #matrices). But sometimes it will run into complex eigenvectors #because we are doing eigenvalue decomposition for asymmetric #matrix(which is usual when k=4,5..). I don't think this algorithm #can recover the whole observation matrix with a single probe #vector eta, but it do recover some columns very well in these #tiny examples.
 
 
-k<-3# hidden state dim
-m<-4#observations
+k<-4# hidden state dim
+m<-5#observations
 P<-runif(k) 
 P<-P/sum(P) ###mixture weight
 M<-matrix(data=0,m,k)
@@ -38,10 +38,10 @@ gen_samp=function(size,P,M)
 	return(list(v1=v1,v2=v2,v3=v3))
 }# function for generating data,v1,v2,v3 are three views
 
-size<-10000
+size<-100000
 data<-gen_samp(size,P,M)
 eta<-runif(m)
-Peta<-t(data$v1)%*%diag(as.vector(data$v3%*%eta))%*%data$v2/size
+Peta<-t(data$v1)%*%(as.vector(data$v3%*%eta)*data$v2)/size
 P12<-t(data$v1)%*%data$v2/size
 svd12<-svd(P12)
 U<-svd12$u[,1:k]
@@ -52,7 +52,6 @@ B<-t(U)%*%Peta%*%V%*%solve(t(U)%*%P12%*%V)
 est<-U%*%eigen(B)$vectors
 for(i in 1:k)# rescaling
 {
-	est1[,i]<-est1[,i]/sum(est1[,i])
 	est[,i]<-est[,i]/sum(est[,i])
 }
 
