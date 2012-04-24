@@ -38,7 +38,7 @@ gen_samp=function(size,P,M)
 	return(list(v1=v1,v2=v2,v3=v3))
 }# function for generating data,v1,v2,v3 are three views
 
-size<-100000
+size<-500000
 data<-gen_samp(size,P,M)
 eta<-runif(m)
 Peta<-t(data$v1)%*%(as.vector(data$v3%*%eta)*data$v2)/size
