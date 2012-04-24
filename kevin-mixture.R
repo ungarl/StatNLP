@@ -44,6 +44,7 @@ predict.topic <- function(doc, model) {
 
 # see how well we can guess the topic, knowing the true parameters
 mean(t(apply(docs, 2, predict.topic, dfm))[,"topic"] == topics)
+# [1] 0.99
 
 all.pairs <- function(x) {
   g <- expand.grid(1:length(x), 1:length(x))
@@ -114,7 +115,7 @@ Triples.hat <- make.prob.distr(Triples.hat)
 
 # See how well we estimate Triples
 kl.divergence(Triples.true, Triples.hat)
-# [1] 0.008204303
+# [1] 0.002168416
 
 estimate.M <- function(eta, U, Pairs, Triples, V) {
   # Compute B(eta)
@@ -172,6 +173,7 @@ M.rec <- apply(apply(M.recovered, c(1,2), median), 2, make.prob.distr)
 
 # See how close I got
 kl.divergence(dfm$M %*% diag(dfm$w), M.hat %*% diag(dfm$w))
+# [1] 0.06076557
 
 ifm <- dfm
 rfm <- dfm
@@ -181,7 +183,7 @@ rfm$M <- M.rec[,c(2,1,3)]
 
 # see how well we can guess the topic based on M.hat
 mean(t(apply(docs, 2, predict.topic, ifm))[,"topic"] == topics)
-# [1] 0.986
+# [1] 0.956
 
 M.hat.kls <- apply(M.hats, 3, function(M) {
   kl.divergence(dfm$M %*% diag(dfm$w), M %*% diag(dfm$w))
